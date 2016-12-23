@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CircleView</string>
+    <string name="action_settings">In RecyclerView</string>
+    <string name="title_activity_in_recycler_view">In RecyclerView</string>
+    <string name="title_activity_draw_text">DrawTextActivity</string>
+    <string name="action_text">Draw Text</string>
+</resources>
