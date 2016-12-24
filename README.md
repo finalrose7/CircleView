@@ -6,7 +6,7 @@ A colorful circle view with text.
 ![maven-central](https://img.shields.io/badge/maven--central-1.0.0-brightgreen.svg)
 ![API](https://img.shields.io/badge/API-14%2B-green.svg)
 
-A colorful circle view with text,you can use it as a avatar!Except in addition,we can set the direction of the text,vertical or horizontal or any angle.
+A colorful circle view with text, you can use it as a avatar! Except in addition, we can set the direction of the text, vertical or horizontal or any angle.
 
 ## Screenshots ##
 
