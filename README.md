@@ -12,7 +12,7 @@ A colorful circle view with text, you can use it as a avatar! Except in addition
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![demo_gif](/screenshots/demo_gif.gif) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![in_rv](https://github.com/backkomyoung/CircleView/blob/master/screenshots/in_rv.png)
+![in_rv](/screenshots/in_rv.png)
 ## Getting started ##
 
 Add a dependency to your `build.gradle`:
