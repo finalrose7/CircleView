@@ -6,7 +6,7 @@ A colorful circle view with text.
 ![maven-central](https://img.shields.io/badge/maven--central-1.0.0-brightgreen.svg)
 ![API](https://img.shields.io/badge/API-14%2B-green.svg)
 
-A colorful circle view with text, you can use it as a avatar! Except in addition, we can set the direction of the text, vertical or horizontal or any angle.
+A colorful circle view with text, you can use it as a avatar! Except in addition, we can set the direction of the text, vertical or horizontal and any angle.
 
 ## Screenshots ##
 
@@ -56,12 +56,12 @@ Add the `me.songning.library.CircleView` to your layout XML file.
 |textColor|color|#FFFFFF|Text color|
 |textSize|dimension|16sp|Text size|
 |text|string|empty|Text content|
-|randomColor|boolean|false|If true,the CircleView background color will show in random color|
-|singleText|boolean|false|If true,no matter how long the text,just display a text|
+|randomColor|boolean|false|If true, the CircleView background color will show in random color|
+|singleText|boolean|false|If true, no matter how long the text, just display a text|
 |textAngle|float|0f|Set the text arbitrary angle in CircleView|
 |speed|integer|4000|If it can rotate, set the rotation speed|
-|textOrientation|enum|TEXT_VERTICAL|Text direction|
-|rotateOrientation|enum|ROTATE_CLOCKWISE|Text rotation direction|
+|textOrientation|enum|vertical|Text direction|
+|rotateOrientation|enum|clockwise|Text rotation direction|
 
 ### Public Methods ###
 
@@ -69,17 +69,17 @@ Add the `me.songning.library.CircleView` to your layout XML file.
 |:----:|:-----------:|
 |startRotateAnimation()|Start rotating|
 |stopRotateAnimation()|Stop rotating|
-|toggleRotateOrientation()|If rotating,toggle direction of rotation|
-|setRotateOrientation(int)|Set rotation direction of the rotate animation,clockwise or anti-clockwise|
+|toggleRotateOrientation()|If rotating, toggle direction of rotation|
+|setRotateOrientation(int)|Set rotation direction of the rotate animation, clockwise or anti-clockwise|
 |setRotateSpeed(int)|Set rotation speed|
 |setCircleColor(int)|Set CircleView background color|
 |setTextColor(int)|Set text color|
 |setTextSize(float)|Set text size|
-|setText(String)|Set text content|
-|setRandomColor(boolean)|If true,the CircleView background color will show in random color|
-|setSingleText(boolean)|If true,no matter how long the text,just display a text|
+|setText(int or String)|Set text content|
+|setRandomColor(boolean)|If true, the CircleView background color will show in random color|
+|setSingleText(boolean)|If true, no matter how long the text, just display a text|
 |setAngle(float)|Set the text arbitrary angle in CircleView|
-|setTextOrientation(int)|Set text direction,vertical or horizontal|
+|setTextOrientation(int)|Set text direction, vertical or horizontal|
 |show()|Show the CircleView with the scale animation|
 |hide()|Hide the CircleView with the scale animation|
 |toggleShow()|Toggle show or hide|
