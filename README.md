@@ -11,8 +11,8 @@ A colorful circle view with text, you can use it as a avatar! Except in addition
 ## Screenshots ##
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![demo_gif](http://ofp4swv4i.bkt.clouddn.com/demo_gif.gif) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![in_rv](http://ofp4swv4i.bkt.clouddn.com/in_rv.png)
+![demo_gif](/screenshots/demo_gif.gif) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![in_rv](https://github.com/backkomyoung/CircleView/blob/master/screenshots/in_rv.png)
 ## Getting started ##
 
 Add a dependency to your `build.gradle`:
@@ -91,8 +91,8 @@ Add the `me.songning.library.CircleView` to your layout XML file.
 
 ## About me ##
 
-* Email：[backkomyoung@gmail.com]()
-* Blog：[http://songning.me](http://songning.me)
+* Email: backkomyoung@gmail.com
+* Blog: [http://songning.me](http://songning.me)
 
 ## License ##
 
