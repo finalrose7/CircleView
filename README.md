@@ -2,17 +2,17 @@
 ---------------
 A colorful circle view with text.
 
-[![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](/LICENSE.text)
-[![maven-central](https://img.shields.io/badge/maven--central-1.0.0-brightgreen.svg)]()
+![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
+![maven-central](https://img.shields.io/badge/maven--central-1.0.0-brightgreen.svg)
 ![API](https://img.shields.io/badge/API-14%2B-green.svg)
 
 A colorful circle view with text,you can use it as a avatar!Except in addition,we can set the direction of the text,vertical or horizontal or any angle.
 
 ## Screenshots ##
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![demo_gif](http://ofp4swv4i.bkt.clouddn.com/demo_gif.gif) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![demo_gif](http://ofp4swv4i.bkt.clouddn.com/demo_gif.gif) 
 ![in_rv](http://ofp4swv4i.bkt.clouddn.com/in_rv.png)
+
 ## Getting started ##
 
 Add a dependency to your `build.gradle`:
