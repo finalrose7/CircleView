@@ -91,13 +91,13 @@ Add the `me.songning.library.CircleView` to your layout XML file.
 
 ## About me ##
 
-* Email: backkomyoung@gmail.com
+* Email: finalrose7@gmail.com
 * Blog: [http://songning.me](http://songning.me)
 
 ## License ##
 
 ```
-Copyright 2016 SongNing
+Copyright 2016 Fitz Yang
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
