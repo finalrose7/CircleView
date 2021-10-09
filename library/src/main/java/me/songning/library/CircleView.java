@@ -63,27 +63,27 @@ public class CircleView extends View implements ValueAnimator.AnimatorUpdateList
 
     private final int DEFAULT_CIRCLE_SIZE;
 
-    private int mCircleColor;
-    private int mTextColor;
-    private float mTextSize;
-    private String mText;
-    private boolean mRandomColor;
-    private boolean mSingleText;
-    private int mTextOrientation;
-    private float mAngle;
-    private int mRotateOrientation;
-    private int mSpeed;
+    private int circleColor;
+    private int textColor;
+    private float textSize;
+    private String text;
+    private boolean randomColor;
+    private boolean singleText;
+    private int textOrientation;
+    private float angle;
+    private int rotateOrientation;
+    private int speed;
 
-    private ValueAnimator mAnimator;
-    private float mRotateValues;
-    private int[] mColors;
+    private ValueAnimator animator;
+    private float rotateValues;
+    private int[] colors;
     private boolean isShow = true;
 
-    private Paint mCirclePaint;
-    private Paint mVerticalTextPaint;
+    private Paint circlePaint;
+    private Paint verticalTextPaint;
 
-    private StaticLayout mStaticLayout;
-    private TextPaint mHorizontalTextPaint;
+    private StaticLayout staticLayout;
+    private TextPaint horizontalTextPaint;
 
     public CircleView(Context context) {
         this(context, null);
@@ -104,52 +104,53 @@ public class CircleView extends View implements ValueAnimator.AnimatorUpdateList
         final float DEFAULT_ANGLE = 0f;
 
         final TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CircleView, defStyleAttr, 0);
-        mCircleColor = array.getColor(R.styleable.CircleView_circleColor, DEFAULT_CIRCLE_COLOR);
-        mTextColor = array.getColor(R.styleable.CircleView_textColor, DEFAULT_TEXT_COLOR);
-        mTextSize = array.getDimension(R.styleable.CircleView_textSize, DEFAULT_TEXT_SIZE);
-        mText = array.getString(R.styleable.CircleView_text);
-        mSingleText = array.getBoolean(R.styleable.CircleView_singleText, false);
-        mRandomColor = array.getBoolean(R.styleable.CircleView_randomColor, false);
-        mTextOrientation = array.getInt(R.styleable.CircleView_textOrientation, TEXT_VERTICAL);
-        mRotateOrientation = array.getInt(R.styleable.CircleView_rotateOrientation, ROTATE_CLOCKWISE);
-        mAngle = array.getFloat(R.styleable.CircleView_textAngle, DEFAULT_ANGLE);
-        mSpeed = array.getInteger(R.styleable.CircleView_speed, DEFAULT_SPEED);
+        circleColor = array.getColor(R.styleable.CircleView_circleColor, DEFAULT_CIRCLE_COLOR);
+        textColor = array.getColor(R.styleable.CircleView_textColor, DEFAULT_TEXT_COLOR);
+        textSize = array.getDimension(R.styleable.CircleView_textSize, DEFAULT_TEXT_SIZE);
+        text = array.getString(R.styleable.CircleView_text);
+        singleText = array.getBoolean(R.styleable.CircleView_singleText, false);
+        randomColor = array.getBoolean(R.styleable.CircleView_randomColor, false);
+        textOrientation = array.getInt(R.styleable.CircleView_textOrientation, TEXT_VERTICAL);
+        rotateOrientation = array.getInt(R.styleable.CircleView_rotateOrientation, ROTATE_CLOCKWISE);
+        angle = array.getFloat(R.styleable.CircleView_textAngle, DEFAULT_ANGLE);
+        speed = array.getInteger(R.styleable.CircleView_speed, DEFAULT_SPEED);
         array.recycle();
+
         init();
     }
 
     private void init() {
 
         //Make the random color initialization here.There are material design colors.
-        mColors = new int[]{
+        colors = new int[]{
                 0xFFF44336, 0xFFE91E63, 0xFF9C27B0, 0xFF673AB7, 0xFF3F51B5, 0xFF2196F3,
                 0xFF03A9F4, 0xFF00BCD4, 0xFF009688, 0xFF4CAF50, 0xFF8BC34A, 0xFFCDDC39,
                 0xFFFFEB3B, 0xFFFFC107, 0xFFFF9800, 0xFFFF5722, 0xFF795548, 0xFF9E9E9E,
                 0xFF607D8B};
 
-        mCirclePaint = new Paint();
-        mCirclePaint.setAntiAlias(true);
-        mCirclePaint.setDither(true);
+        circlePaint = new Paint();
+        circlePaint.setAntiAlias(true);
+        circlePaint.setDither(true);
 
-        if (mRandomColor) {
-            int random = new Random().nextInt(mColors.length);
-            mCircleColor = mColors[random];
+        if (randomColor) {
+            int random = new Random().nextInt(colors.length);
+            circleColor = colors[random];
         }
 
-        mCirclePaint.setColor(mCircleColor);
+        circlePaint.setColor(circleColor);
 
-        mVerticalTextPaint = new Paint();
-        mVerticalTextPaint.setAntiAlias(true);
-        mVerticalTextPaint.setDither(true);
-        mVerticalTextPaint.setTextSize(mTextSize);
-        mVerticalTextPaint.setColor(mTextColor);
+        verticalTextPaint = new Paint();
+        verticalTextPaint.setAntiAlias(true);
+        verticalTextPaint.setDither(true);
+        verticalTextPaint.setTextSize(textSize);
+        verticalTextPaint.setColor(textColor);
 
-        if (TextUtils.isEmpty(mText)) {
-            mText = "";
+        if (TextUtils.isEmpty(text)) {
+            text = "";
         }
 
-        mHorizontalTextPaint = new TextPaint(mVerticalTextPaint);
-        mStaticLayout = new StaticLayout(mText, mHorizontalTextPaint, 1, Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false);
+        horizontalTextPaint = new TextPaint(verticalTextPaint);
+        staticLayout = new StaticLayout(text, horizontalTextPaint, 1, Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false);
     }
 
     @Override
@@ -185,86 +186,86 @@ public class CircleView extends View implements ValueAnimator.AnimatorUpdateList
         int width = getWidth() - paddingLeft - paddingRight;
         int height = getHeight() - paddingTop - paddingBottom;
 
-        float centerX = paddingLeft + width / 2;
-        float centerY = paddingTop + height / 2;
+        float centerX = paddingLeft + (width * 1f) / 2;
+        float centerY = paddingTop + (height * 1f) / 2;
 
-        float radius = Math.min(width, height) / 2;
-        canvas.drawCircle(centerX, centerY, radius, mCirclePaint);
+        float radius = (Math.min(width, height) * 1f) / 2;
+        canvas.drawCircle(centerX, centerY, radius, circlePaint);
 
-        if (TextUtils.isEmpty(mText))
+        if (TextUtils.isEmpty(text))
             return;
 
-        canvas.rotate(mAngle, centerX, centerY);
+        canvas.rotate(angle, centerX, centerY);
         drawText(canvas, centerX, centerY);
     }
 
     private void drawText(Canvas canvas, float centerX, float centerY) {
 
-        if (mSingleText) {
-            String singleText = getFirstText(mText);
+        if (singleText) {
+            String singleText = getFirstText(text);
             drawVerticalText(canvas, centerX, centerY, singleText);
             return;
         }
 
-        if (mTextOrientation == TEXT_VERTICAL) {
-            drawVerticalText(canvas, centerX, centerY, mText);
-        } else if (mTextOrientation == TEXT_HORIZONTAL) {
+        if (textOrientation == TEXT_VERTICAL) {
+            drawVerticalText(canvas, centerX, centerY, text);
+        } else if (textOrientation == TEXT_HORIZONTAL) {
             drawHorizontalText(canvas, centerX, centerY);
         }
 
     }
 
     private void drawHorizontalText(Canvas canvas, float centerX, float centerY) {
-        canvas.translate(centerX, centerY - mStaticLayout.getHeight() / 2);
-        mStaticLayout.draw(canvas);
+        canvas.translate(centerX, centerY - (staticLayout.getHeight() * 1f) / 2);
+        staticLayout.draw(canvas);
     }
 
     private void drawVerticalText(Canvas canvas, float centerX, float centerY, String text) {
-        Paint.FontMetrics fontMetrics = mVerticalTextPaint.getFontMetrics();
+        Paint.FontMetrics fontMetrics = verticalTextPaint.getFontMetrics();
         float baseLine = -(fontMetrics.ascent + fontMetrics.descent) / 2;
-        float textWidth = mVerticalTextPaint.measureText(text);
+        float textWidth = verticalTextPaint.measureText(text);
         float startX = centerX - textWidth / 2;
         float endY = centerY + baseLine;
-        canvas.drawText(text, startX, endY, mVerticalTextPaint);
+        canvas.drawText(text, startX, endY, verticalTextPaint);
     }
 
     public void startRotateAnimation() {
-        if (mAnimator == null) {
+        if (animator == null) {
             initRotateAnimation();
         }
-        if (!mAnimator.isRunning()) {
-            mAnimator.start();
+        if (!animator.isRunning()) {
+            animator.start();
         }
     }
 
     private void initRotateAnimation() {
-        if (mRotateOrientation == ROTATE_CLOCKWISE) {
-            mRotateValues = 360f;
-        } else if (mRotateOrientation == ROTATE_ANTICLOCKWISE) {
-            mRotateValues = -360f;
+        if (rotateOrientation == ROTATE_CLOCKWISE) {
+            rotateValues = 360f;
+        } else if (rotateOrientation == ROTATE_ANTICLOCKWISE) {
+            rotateValues = -360f;
         }
-        mAnimator = ValueAnimator.ofFloat(0f, mRotateValues);
-        mAnimator.setInterpolator(new LinearInterpolator());
-        mAnimator.setDuration(mSpeed);
-        mAnimator.addUpdateListener(this);
-        mAnimator.setRepeatCount(ValueAnimator.INFINITE);
-        mAnimator.setRepeatMode(ValueAnimator.RESTART);
+        animator = ValueAnimator.ofFloat(0f, rotateValues);
+        animator.setInterpolator(new LinearInterpolator());
+        animator.setDuration(speed);
+        animator.addUpdateListener(this);
+        animator.setRepeatCount(ValueAnimator.INFINITE);
+        animator.setRepeatMode(ValueAnimator.RESTART);
     }
 
     @Override
     public void onAnimationUpdate(ValueAnimator animation) {
-        mAngle = (float) animation.getAnimatedValue();
+        angle = (float) animation.getAnimatedValue();
         invalidate();
     }
 
     public void stopRotateAnimation() {
-        if (mAnimator != null && mAnimator.isRunning()) {
-            mAnimator.cancel();
+        if (animator != null && animator.isRunning()) {
+            animator.cancel();
         }
     }
 
     public void toggleRotateOrientation() {
-        if (mAnimator == null || !mAnimator.isRunning())
+        if (animator == null || !animator.isRunning())
             return;
         int state = getRotateOrientation();
         if (state == ROTATE_CLOCKWISE) {
@@ -280,12 +281,12 @@ public class CircleView extends View implements ValueAnimator.AnimatorUpdateList
      * @param orientation ROTATE_CLOCKWISE or ROTATE_ANTICLOCKWISE.
      */
     public void setRotateOrientation(int orientation) {
-        mRotateOrientation = orientation;
-        if (mAnimator != null && mAnimator.isRunning()) {
-            mAnimator.removeUpdateListener(this);
-            mAnimator.cancel();
+        rotateOrientation = orientation;
+        if (animator != null && animator.isRunning()) {
+            animator.removeUpdateListener(this);
+            animator.cancel();
             initRotateAnimation();
-            mAnimator.start();
+            animator.start();
         }
     }
 
@@ -297,21 +298,19 @@ public class CircleView extends View implements ValueAnimator.AnimatorUpdateList
     public void setRotateSpeed(int speedValues) {
         if (speedValues < 0)
             throw new IllegalArgumentException("The speed values must be greater than 0.");
-        mSpeed = speedValues;
-        if (mAnimator != null) {
-            mAnimator.setDuration(speedValues);
+        speed = speedValues;
+        if (animator != null) {
+            animator.setDuration(speedValues);
         }
     }
 
     public int getRotateSpeed() {
-        return mSpeed;
+        return speed;
     }
 
     public int getRotateOrientation() {
         int result = ROTATE_CLOCKWISE;
-        if (mRotateValues == 360f) {
-            result = ROTATE_CLOCKWISE;
-        } else if (mRotateValues == -360f) {
+        if (rotateValues == -360f) {
             result = ROTATE_ANTICLOCKWISE;
         }
         return result;
@@ -319,35 +318,35 @@ public class CircleView extends View implements ValueAnimator.AnimatorUpdateList
 
 
     public void setCircleColor(int circleColor) {
-        mCircleColor = circleColor;
-        mCirclePaint.setColor(mCircleColor);
+        this.circleColor = circleColor;
+        circlePaint.setColor(this.circleColor);
         invalidate();
     }
 
     public int getCircleColor() {
-        return mCircleColor;
+        return circleColor;
     }
 
     public void setTextColor(int textColor) {
-        mTextColor = textColor;
-        mVerticalTextPaint.setColor(mTextColor);
-        mHorizontalTextPaint.setColor(mTextColor);
+        this.textColor = textColor;
+        verticalTextPaint.setColor(this.textColor);
+        horizontalTextPaint.setColor(this.textColor);
         invalidate();
     }
 
     public int getTextColor() {
-        return mTextColor;
+        return textColor;
     }
 
     public void setTextSize(float textSize) {
-        mTextSize = sp2px(getContext(), textSize);
-        mVerticalTextPaint.setTextSize(mTextSize);
-        mHorizontalTextPaint.setTextSize(mTextSize);
+        this.textSize = sp2px(getContext(), textSize);
+        verticalTextPaint.setTextSize(this.textSize);
+        horizontalTextPaint.setTextSize(this.textSize);
         invalidate();
     }
 
     public float getTextSize() {
-        return mTextSize;
+        return textSize;
     }
 
     public void setText(int id) {
@@ -357,15 +356,15 @@ public class CircleView extends View implements ValueAnimator.AnimatorUpdateList
     public void setText(String text) {
         if (TextUtils.isEmpty(text))
             return;
-        if (mSingleText) {
+        if (singleText) {
             text = getFirstText(text);
         }
-        mText = text;
+        this.text = text;
         invalidate();
     }
 
     public String getText() {
-        return mText;
+        return text;
     }
 
     /**
@@ -374,12 +373,12 @@ public class CircleView extends View implements ValueAnimator.AnimatorUpdateList
      * @param randomColor True or false.
      */
     public void setRandomColor(boolean randomColor) {
-        mRandomColor = randomColor;
-        if (mRandomColor) {
-            int random = new Random().nextInt(mColors.length);
-            mCircleColor = mColors[random];
+        this.randomColor = randomColor;
+        if (this.randomColor) {
+            int random = new Random().nextInt(colors.length);
+            circleColor = colors[random];
         }
-        mCirclePaint.setColor(mCircleColor);
+        circlePaint.setColor(circleColor);
         invalidate();
     }
 
@@ -389,7 +388,7 @@ public class CircleView extends View implements ValueAnimator.AnimatorUpdateList
      * @param singleText True or false.
      */
     public void setSingleText(boolean singleText) {
-        mSingleText = singleText;
+        this.singleText = singleText;
         invalidate();
     }
 
@@ -399,12 +398,12 @@ public class CircleView extends View implements ValueAnimator.AnimatorUpdateList
      * @param angle Float values of the angle.
      */
     public void setAngle(float angle) {
-        mAngle = angle;
+        this.angle = angle;
         invalidate();
     }
 
     public float getAngle() {
-        return mAngle;
+        return angle;
     }
 
     /**
@@ -413,19 +412,19 @@ public class CircleView extends View implements ValueAnimator.AnimatorUpdateList
      * @param orientation TEXT_VERTICAL or TEXT_HORIZONTAL.
      */
     public void setTextOrientation(int orientation) {
-        mTextOrientation = orientation;
-        mStaticLayout = null;
-        mStaticLayout = new StaticLayout(mText, mHorizontalTextPaint, 1, Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false);
+        textOrientation = orientation;
+        staticLayout = null;
+        staticLayout = new StaticLayout(text, horizontalTextPaint, 1, Layout.Alignment.ALIGN_CENTER, 1.0f, 0.0f, false);
         invalidate();
     }
 
     public String getTextOrientation() {
-        if (mAnimator != null && mAnimator.isRunning()) {
+        if (animator != null && animator.isRunning()) {
             return "rotate";
         }
-        if (mTextOrientation == TEXT_VERTICAL) {
+        if (textOrientation == TEXT_VERTICAL) {
             return "vertical";
-        } else if (mTextOrientation == TEXT_HORIZONTAL) {
+        } else if (textOrientation == TEXT_HORIZONTAL) {
             return "horizontal";
         }
         return null;
@@ -481,10 +480,10 @@ public class CircleView extends View implements ValueAnimator.AnimatorUpdateList
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if (mAnimator != null) {
-            mAnimator.removeUpdateListener(this);
-            mAnimator.end();
-            mAnimator = null;
+        if (animator != null) {
+            animator.removeUpdateListener(this);
+            animator.end();
+            animator = null;
         }
     }
 
