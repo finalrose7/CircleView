@@ -14,13 +14,6 @@
     ~ limitations under the License.
     -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="me.songning.library">
-
-    <application android:allowBackup="true"
-                 android:label="@string/app_name"
-                 android:supportsRtl="true"
-    >
-
-    </application>
+    package="me.songning.library">
 
 </manifest>
