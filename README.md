@@ -17,9 +17,11 @@ A colorful circle view with text, you can use it as a avatar! Except in addition
 
 Add a dependency to your `build.gradle`:
 
+Now migrated to mavenCentral !
+
 ```groovy
 dependencies {
-    compile 'me.songning.CircleView:library:1.0.0'
+    implementation 'io.github.finalrose7:CircleView:1.0.0'
 }
 ```
 
@@ -27,8 +29,8 @@ or Maven:
 
 ```
 <dependency>
-  <groupId>me.songning.CircleView</groupId>
-  <artifactId>library</artifactId>
+  <groupId>io.github.finalrose7</groupId>
+  <artifactId>CircleView</artifactId>
   <version>1.0.0</version>
   <type>pom</type>
 </dependency>
@@ -92,12 +94,11 @@ Add the `me.songning.library.CircleView` to your layout XML file.
 ## About me ##
 
 * Email: finalrose7@gmail.com
-* Blog: [http://songning.me](http://songning.me)
 
 ## License ##
 
 ```
-Copyright 2016 Fitz Yang
+Copyright 2016 Finalrose7
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
